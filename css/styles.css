@@ -411,14 +411,13 @@ textarea {
   transform: translateX(-50%) translateY(-70%);
   opacity: 0;
   width: 408px;
-  max-height: 584px;
+  min-height: 584px;
   background-color: #fcfcfc;
   border-radius: 4px;
   box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
     0px 1px 3px 0 rgba(0, 0, 0, 0.12), 0px 2px 1px 0px rgba(0, 0, 0, 0.2);
 
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    transfrom 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transfrom 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .backdrop.is-open .modal {
   opacity: 1;
@@ -433,19 +432,24 @@ body:has(.backdrop.is-open) {
   align-items: center;
   width: 24px;
   height: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   background-color: #e7e9fc;
-  border-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
   position: absolute;
   top: 24px;
   right: 24px;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .cross-button:hover,
 .cross-button:focus {
   fill: #ffffff;
+  border: none;
   background-color: #404bbf;
+}
+.cross-svg {
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .text-modal {
@@ -456,13 +460,14 @@ body:has(.backdrop.is-open) {
 }
 .lable-modal,
 .label-text-area {
-  display: flex;
+  display: block;
   flex-direction: column;
   margin-bottom: 4px;
   font-size: 12px;
   font-weight: 400;
-  line-height: 1.16667;
+  line-height: 1.17;
   letter-spacing: 0.04em;
+  color: #8e8f99;
 }
 
 .modal-input {
@@ -470,7 +475,8 @@ body:has(.backdrop.is-open) {
   height: 40px;
   border-radius: 4px;
   border: 1px solid rgba(46, 47, 66, 0.4);
-  outline: none;
+  outline: transparent;
+  background-color: transparent;
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   padding: 11px 38px;
 }
@@ -480,22 +486,20 @@ body:has(.backdrop.is-open) {
 .modal-input:focus + .svg-input {
   fill: #4d5ae5;
 }
-.modal-texarea-div {
-  margin-bottom: 16px;
-  height: 138px;
-}
 .modal-texarea {
   resize: none;
   padding: 8px 16px;
   width: 100%;
   height: 120px;
   outline: transparent;
+  background-color: transparent;
+  color: rgba(46, 47, 66, 0.4);
   border-radius: 4px;
   border: 1px solid rgba(46, 47, 66, 0.4);
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   font-weight: 400;
   font-size: 12px;
-  line-height: 1.16667;
+  line-height: 1.17;
   letter-spacing: 0.04em;
 }
 .modal-texarea:focus {
@@ -518,14 +522,16 @@ body:has(.backdrop.is-open) {
   border: 1px solid rgba(46, 47, 66, 0.4);
   cursor: pointer;
   margin-right: 8px;
+  fill: transparent;
 
-  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 input[type="checkbox"]:checked + .agreement-label > .agreement-checkbox {
   background-color: #404bbf;
-  border-color: #404bbf;
-  color: #ffffff;
+  border: none;
+  fill: #f4f4fd;
 }
 .agreement-checkbox-icon {
   color: currentColor;
@@ -533,7 +539,7 @@ input[type="checkbox"]:checked + .agreement-label > .agreement-checkbox {
 .agreement-label {
   font-weight: 400;
   font-size: 12px;
-  line-height: 1.16667;
+  line-height: 1.17;
   letter-spacing: 0.04em;
   color: #8e8f99;
 }
@@ -546,17 +552,20 @@ input[type="checkbox"]:checked + .agreement-label > .agreement-checkbox {
 }
 
 .send-modal {
-  width: 169px;
+  display: block;
+  min-width: 169px;
   height: 56px;
   border-radius: 4px;
+  border: none;
   padding: 16px 32px;
   background-color: #4d5ae5;
   color: #ffffff;
+  line-height: 1.5;
   font-weight: 500;
   letter-spacing: 0.04em;
+  cursor: pointer;
   text-align: center;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   left: 50%;
   transform: translateX(-50%);
@@ -564,7 +573,6 @@ input[type="checkbox"]:checked + .agreement-label > .agreement-checkbox {
 .send-modal:hover,
 .send-modal:focus {
   background-color: #404bbf;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
 }
 .modal-div {
   margin-bottom: 8px;
@@ -580,11 +588,14 @@ input[type="checkbox"]:checked + .agreement-label > .agreement-checkbox {
   fill: #2e2f42;
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .footer-form {
   display: flex;
   gap: 24px;
   align-items: flex-end;
   justify-content: flex-end;
+}
+.footer-div-form {
   margin-left: 80px;
 }
 .footer-form-input {
@@ -594,24 +605,22 @@ input[type="checkbox"]:checked + .agreement-label > .agreement-checkbox {
   height: 40px;
   padding: 8px 16px;
 
-  background-color: #2e2f42;
+  background-color: transparent;
   outline: transparent;
 
   font-weight: 400;
   font-size: 12px;
 
   line-height: 2;
-  letter-spacing: 0.04em;
   color: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer-form-input:focus {
   border-color: #31d0aa;
 }
-.footer-label {
-  display: flex;
-  flex-direction: column;
+.footer-div-title {
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
@@ -619,11 +628,14 @@ input[type="checkbox"]:checked + .agreement-label > .agreement-checkbox {
   color: #ffffff;
   margin-bottom: 16px;
 }
+.footer-label {
+  display: flex;
+  flex-direction: column;
+}
 .footer-btn-subscribe {
-  border: 0;
   border-radius: 4px;
   padding: 8px 24px;
-  width: 165px;
+  min-width: 165px;
   height: 40px;
   display: flex;
   align-items: center;
@@ -634,7 +646,10 @@ input[type="checkbox"]:checked + .agreement-label > .agreement-checkbox {
 
   font-weight: 500;
   font-size: 16px;
-
+  letter-spacing: 0.04em;
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
+  border: none;
   line-height: 1.5;
   letter-spacing: 0.04em;
   text-align: center;
@@ -646,6 +661,5 @@ input[type="checkbox"]:checked + .agreement-label > .agreement-checkbox {
   background-color: #31d0aa;
 }
 .footer-subscribe-svg {
-}
-.footer-form-div {
+  margin-left: 16px;
 }
