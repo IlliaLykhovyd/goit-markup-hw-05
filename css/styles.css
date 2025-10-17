@@ -607,6 +607,7 @@ input[type="checkbox"]:checked + .agreement-label > .agreement-checkbox {
   width: 264px;
   height: 40px;
   padding: 8px 16px;
+  letter-spacing: 0.04em;
 
   background-color: transparent;
   outline: transparent;
