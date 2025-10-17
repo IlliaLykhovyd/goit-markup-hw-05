@@ -577,6 +577,9 @@ input[type="checkbox"]:checked + .agreement-label > .agreement-checkbox {
 .modal-div {
   margin-bottom: 8px;
 }
+.modal-textarea-div {
+  margin-bottom: 16px;
+}
 .modal-input-div {
   position: relative;
 }
